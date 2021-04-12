@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  DetailCityWeatherViewController.swift
 //  Weather
 //
 //  Created by Mikhail on 12.04.2021.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class DetailCityWeatherViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
