@@ -9,16 +9,33 @@ import Foundation
 
 struct ForecastWeather {
     
+    let name: String
     let date: String
+    
+    let temp: Double
+    var tempString: String {
+        return String(format: "%.0f", temp)
+    }
+    
+    let feelsLike: Double
+    var feelsLikeString: String {
+    return String(format: "%.0f °C", feelsLike)
+}
     
     let tempMin: Double
     var tempMinString: String {
-        return String(format: "%.1f", tempMin)
+        return String(format: "%.0f°C /", tempMin)
     }
     let tempMax: Double
     var tempMaxString: String {
-            return String(format: "%.1f", tempMax)
+            return String(format: "%.0f°C", tempMax)
     }
+    
+    let wind: Double
+    var windString: String {
+            return String(format: "%.0f m/s", wind)
+    }
+    
     let conditionCode: Int
         
     var systemIcnNameString: String {
@@ -37,10 +54,15 @@ struct ForecastWeather {
         }
     }
     init?(forecastWeatherData: ForecastWeatherData) {
-        date = forecastWeatherData.date
-        tempMin = forecastWeatherData.main.tempMin
-        tempMax = forecastWeatherData.main.tempMax
-        conditionCode = forecastWeatherData.weather.first!.id
+        name = forecastWeatherData.city.name
+        date = forecastWeatherData.list.first!.dtTxt
+        temp = forecastWeatherData.list.first!.main.temp
+        feelsLike = forecastWeatherData.list.first!.main.feelsLike
+        tempMin = forecastWeatherData.list.first!.main.tempMin
+        tempMax = forecastWeatherData.list.first!.main.tempMax
+        wind = forecastWeatherData.list.first!.wind.speed
+        
+        conditionCode = forecastWeatherData.list.first!.weather.first!.id
         
     }
 }

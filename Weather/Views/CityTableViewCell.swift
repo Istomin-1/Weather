@@ -9,8 +9,7 @@ import UIKit
 
 class CityTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var cityName: UILabel!
-    {
+    @IBOutlet weak var cityName: UILabel! {
         didSet {
             cityName.adjustsFontSizeToFitWidth = true
             cityName.minimumScaleFactor = 0.5
@@ -22,7 +21,7 @@ class CityTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+    
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
