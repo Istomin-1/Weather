@@ -12,10 +12,9 @@ class NetworkWeatherManager {
     var onCompletion: ((ForecastWeather) -> Void)?
     
     func fetchForecastWeather(forCity city: String) {
-        let urlString = "https://api.openweathermap.org/data/2.5/forecast?q=\(city)&appid=\(apiKey)&units=metric"
+        let urlString = "https://api.openweathermap.org/data/2.5/forecast?q=\(city)&cnt=24&appid=\(apiKey)&units=metric"
         performRequest(withUrlString: urlString)
     }
-    
     
     func performRequest(withUrlString urlString: String) {
         guard let url = URL(string: urlString) else { return }

@@ -11,7 +11,6 @@ class CitiesWeatherTableViewController: UITableViewController {
     
     var citiesWeather = [ForecastWeather]()
     var networkManager = NetworkWeatherManager()
-    var listOfCities = DataManager.cityName
    
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,13 +22,13 @@ class CitiesWeatherTableViewController: UITableViewController {
     
     private func loadListOfCities() {
         let startCities = ["Ekaterinburg", "Moscow"]
-        if listOfCities == [] {
+        if DataManager.cityName.isEmpty {
             for city in startCities {
                 self.networkManager.fetchForecastWeather(forCity: city)
-                listOfCities.insert(city, at: listOfCities.endIndex)
+                DataManager.cityName.insert(city, at: DataManager.cityName.endIndex)
             }
         } else {
-            for city in listOfCities {
+            for city in DataManager.cityName {
                 self.networkManager.fetchForecastWeather(forCity: city)
             }
         }
@@ -53,7 +52,7 @@ class CitiesWeatherTableViewController: UITableViewController {
         let city = citiesWeather[indexPath.row]
         cell.cityName.text = city.name
         cell.cityTemp.text = city.tempString
-        cell.cityImage.image = UIImage(systemName: city.systemIcnNameString)
+        cell.cityImage.image = UIImage(systemName: city.systemIcnNameString[0])
 
         return cell
     }

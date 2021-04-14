@@ -9,12 +9,13 @@ import UIKit
 
 class CityTableViewCell: UITableViewCell {
 
-    @IBOutlet weak var cityName: UILabel! {
-        didSet {
-            cityName.adjustsFontSizeToFitWidth = true
-            cityName.minimumScaleFactor = 0.5
-        }
-    }
+    @IBOutlet weak var cityName: UILabel!
+//    {
+//        didSet {
+//            cityName.adjustsFontSizeToFitWidth = true
+//            cityName.minimumScaleFactor = 0.5
+//        }
+//    }
     
     @IBOutlet weak var cityImage: UIImageView!
     @IBOutlet weak var cityTemp: UILabel!
