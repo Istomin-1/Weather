@@ -9,13 +9,20 @@ import UIKit
 
 class DetailCityWeatherViewController: UIViewController {
     
+    // MARK: - Properties
     var cityWeather: ForecastWeather!
     
     @IBOutlet weak var cityNameLabel: UILabel!
     @IBOutlet weak var currentWeatherImageView: UIImageView!
     @IBOutlet weak var temperature: UILabel!
+    @IBOutlet weak var celsiusLabel: UILabel!
+    
+    @IBOutlet weak var feelsLikeNameLabel: UILabel!
     @IBOutlet weak var feelsLikeLabel: UILabel!
+    @IBOutlet weak var windNameLabel: UILabel!
     @IBOutlet weak var windLabel: UILabel!
+    
+    @IBOutlet weak var forecastLabel: UILabel!
     
     @IBOutlet weak var dateOneDayLabel: UILabel!
     @IBOutlet weak var weatherForecastOneDayView: UIImageView!
@@ -31,34 +38,66 @@ class DetailCityWeatherViewController: UIViewController {
     @IBOutlet weak var weatherForecastThreeDaysView: UIImageView!
     @IBOutlet weak var minTempThreeDaysLabel: UILabel!
     @IBOutlet weak var maxTempThreeDaysLabel: UILabel!
-    
+
+    // MARK: - Life cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        updatUI()
+        
+        updateinterface()
         view.addGradient()
+        updateLayer()
     }
-
-    func updatUI() {
+    
+    // MARK: - Update interface
+    func updateinterface() {
         cityNameLabel.text = cityWeather.name
-        currentWeatherImageView.image = UIImage(systemName: cityWeather.systemIcnNameString[0])
+        currentWeatherImageView.image = UIImage(systemName: cityWeather.systemIcnNameString.first!)
         temperature.text = cityWeather.tempString
         feelsLikeLabel.text = cityWeather.feelsLikeString
         windLabel.text = cityWeather.windString
         
         dateOneDayLabel.text = cityWeather.dateFormater[7]
-        currentWeatherImageView.image = UIImage(systemName: cityWeather.systemIcnNameString[7])
-        minTempOneDayLabel.text = cityWeather.tempMinString[7]
-        maxTempOneDayLabel.text = cityWeather.tempMaxString[7]
+        weatherForecastOneDayView.image = UIImage(systemName: cityWeather.systemIcnNameString[7])
+        minTempOneDayLabel.text = cityWeather.tempMinString.first!.first
+        maxTempOneDayLabel.text = cityWeather.tempMaxString.first!.last
         
         dateTwoDaysLabel.text = cityWeather.dateFormater[15]
         weatherForecastTwoDaysView.image = UIImage(systemName: cityWeather.systemIcnNameString[15])
-        minTempTwoDaysLabel.text = cityWeather.tempMinString[15]
-        maxTempTwoDaysLabel.text = cityWeather.tempMaxString[15]
+        minTempTwoDaysLabel.text = cityWeather.tempMinString[1].first
+        maxTempTwoDaysLabel.text = cityWeather.tempMaxString[1].last
         
-        dateThreeDaysLabel.text = cityWeather.dateFormater[23]
-        weatherForecastThreeDaysView.image = UIImage(systemName: cityWeather.systemIcnNameString[23])
-        minTempThreeDaysLabel.text = cityWeather.tempMinString[23]
-        maxTempThreeDaysLabel.text = cityWeather.tempMaxString[23]
+        dateThreeDaysLabel.text = cityWeather.dateFormater.last
+        weatherForecastThreeDaysView.image = UIImage(systemName: cityWeather.systemIcnNameString.last!)
+        minTempThreeDaysLabel.text = cityWeather.tempMinString.last!.first
+        maxTempThreeDaysLabel.text = cityWeather.tempMaxString.last!.last
+    }
+    
+    func updateLayer() {
+        cityNameLabel.addShadow()
+        currentWeatherImageView.addShadow()
+        temperature.addShadow()
+        celsiusLabel.addShadow()
+        
+        feelsLikeNameLabel.addShadow()
+        feelsLikeLabel.addShadow()
+        windNameLabel.addShadow()
+        windLabel.addShadow()
+        forecastLabel.addShadow()
+        
+        dateOneDayLabel.addShadow()
+        minTempOneDayLabel.addShadow()
+        maxTempOneDayLabel.addShadow()
+        weatherForecastOneDayView.addShadow()
+        
+        dateTwoDaysLabel.addShadow()
+        maxTempTwoDaysLabel.addShadow()
+        minTempTwoDaysLabel.addShadow()
+        weatherForecastTwoDaysView.addShadow()
+        
+        dateThreeDaysLabel.addShadow()
+        maxTempThreeDaysLabel.addShadow()
+        minTempThreeDaysLabel.addShadow()
+        weatherForecastThreeDaysView.addShadow()
     }
 }
 

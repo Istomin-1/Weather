@@ -7,6 +7,7 @@
 
 import Foundation
 
+
 class NetworkWeatherManager {
     
     var onCompletion: ((ForecastWeather) -> Void)?
@@ -19,11 +20,11 @@ class NetworkWeatherManager {
     func performRequest(withUrlString urlString: String) {
         guard let url = URL(string: urlString) else { return }
         let task = URLSession.shared.dataTask(with: url) { data, response, error in
-                if let data = data {
-                    if let forecastWeather = self.parseJSON(withData: data) {
-                        self.onCompletion?(forecastWeather)
-                    }
+            if let data = data {
+                if let forecastWeather = self.parseJSON(withData: data) {
+                    self.onCompletion?(forecastWeather)
                 }
+            }
         }
         task.resume()
     }

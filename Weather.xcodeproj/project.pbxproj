@@ -17,6 +17,7 @@
 		743A8EA426245F8E007BD937 /* ForecastWeatherData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743A8EA326245F8E007BD937 /* ForecastWeatherData.swift */; };
 		743A8EAB26246C45007BD937 /* NetworkWeatherManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 743A8EAA26246C45007BD937 /* NetworkWeatherManager.swift */; };
 		745070FD26275C0600E4EC9E /* UIView+Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745070FC26275C0600E4EC9E /* UIView+Gradient.swift */; };
+		7481BCBF2628600C0078DDA2 /* AlertController + CitiesWeatherTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7481BCBE2628600C0078DDA2 /* AlertController + CitiesWeatherTableViewController.swift */; };
 		748C6DE82624823000DE0F4A /* ForecastWeather .swift in Sources */ = {isa = PBXBuildFile; fileRef = 748C6DE72624823000DE0F4A /* ForecastWeather .swift */; };
 		748C6DEC2624951B00DE0F4A /* CityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748C6DEB2624951B00DE0F4A /* CityTableViewCell.swift */; };
 		748C6DFB2625894A00DE0F4A /* ApiKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748C6DFA2625894A00DE0F4A /* ApiKey.swift */; };
@@ -36,6 +37,7 @@
 		743A8EA326245F8E007BD937 /* ForecastWeatherData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastWeatherData.swift; sourceTree = "<group>"; };
 		743A8EAA26246C45007BD937 /* NetworkWeatherManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkWeatherManager.swift; sourceTree = "<group>"; };
 		745070FC26275C0600E4EC9E /* UIView+Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+Gradient.swift"; sourceTree = "<group>"; };
+		7481BCBE2628600C0078DDA2 /* AlertController + CitiesWeatherTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AlertController + CitiesWeatherTableViewController.swift"; sourceTree = "<group>"; };
 		748C6DE72624823000DE0F4A /* ForecastWeather .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ForecastWeather .swift"; sourceTree = "<group>"; };
 		748C6DEB2624951B00DE0F4A /* CityTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CityTableViewCell.swift; sourceTree = "<group>"; };
 		748C6DFA2625894A00DE0F4A /* ApiKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiKey.swift; sourceTree = "<group>"; };
@@ -72,9 +74,10 @@
 		743A8E8226245651007BD937 /* Weather */ = {
 			isa = PBXGroup;
 			children = (
+				7481BCBD26285F950078DDA2 /* Extensions */,
 				748C6DF02624A92600DE0F4A /* ViewControllers */,
-				748C6DEA262494E200DE0F4A /* Views */,
 				743A8EA626245F9B007BD937 /* Models */,
+				748C6DEA262494E200DE0F4A /* Views */,
 				743A8EA926246BD3007BD937 /* Services */,
 				748C6DEF2624A8E400DE0F4A /* Supporting Files */,
 				743A8E8C26245653007BD937 /* Assets.xcassets */,
@@ -100,12 +103,21 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		7481BCBD26285F950078DDA2 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7481BCBE2628600C0078DDA2 /* AlertController + CitiesWeatherTableViewController.swift */,
+				745070FC26275C0600E4EC9E /* UIView+Gradient.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		748C6DEA262494E200DE0F4A /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				748C6DEB2624951B00DE0F4A /* CityTableViewCell.swift */,
 				743A8E8926245651007BD937 /* Main.storyboard */,
 				743A8E8E26245653007BD937 /* LaunchScreen.storyboard */,
-				748C6DEB2624951B00DE0F4A /* CityTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -124,9 +136,8 @@
 		748C6DF02624A92600DE0F4A /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
-				743A8E8726245651007BD937 /* DetailCityWeatherViewController.swift */,
 				743A8E98262457D7007BD937 /* CitiesWeatherTableViewController.swift */,
-				745070FC26275C0600E4EC9E /* UIView+Gradient.swift */,
+				743A8E8726245651007BD937 /* DetailCityWeatherViewController.swift */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -211,6 +222,7 @@
 				748C6DFE262596C200DE0F4A /* DataManager.swift in Sources */,
 				743A8EA426245F8E007BD937 /* ForecastWeatherData.swift in Sources */,
 				743A8E99262457D7007BD937 /* CitiesWeatherTableViewController.swift in Sources */,
+				7481BCBF2628600C0078DDA2 /* AlertController + CitiesWeatherTableViewController.swift in Sources */,
 				743A8E8626245651007BD937 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -361,6 +373,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9FX9R88448;
 				INFOPLIST_FILE = "$(SRCROOT)/Weather/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -380,6 +393,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9FX9R88448;
 				INFOPLIST_FILE = "$(SRCROOT)/Weather/Supporting Files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

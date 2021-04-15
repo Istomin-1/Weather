@@ -7,6 +7,7 @@
 
 import Foundation
 
+
 class DataManager {
     
     private enum SettingsKeys: String {
@@ -18,7 +19,7 @@ class DataManager {
             if let array = UserDefaults.standard.array(forKey: SettingsKeys.cityName.rawValue) as? [String] {
                 return array
             } else {
-              return []
+                return []
             }
         }
         set {

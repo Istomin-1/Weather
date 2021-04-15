@@ -7,6 +7,7 @@
 
 import Foundation
 
+// MARK: - Server response data model
 struct ForecastWeatherData: Codable {
     let city: City
     let list: [WeatherForecast]

@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="C58689-C6-6-C3-B-4-F00-B2-DE-99-A63-CAE5084" translatesAutoresizingMaskIntoConstraints="NO" id="bFk-0B-cIO">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="C58689-C6-6-C3-B-4-F00-B2-DE-99-A63-CAE5084" translatesAutoresizingMaskIntoConstraints="NO" id="bFk-0B-cIO" userLabel="Weather">
                                 <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                         </subviews>

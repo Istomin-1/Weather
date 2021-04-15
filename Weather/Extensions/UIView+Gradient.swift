@@ -8,7 +8,7 @@
 import UIKit
 
 extension UIView {
-    //MARK: - AddGradient
+    //MARK: - Add Gradient
     func addGradient() {
         let gradientLayer = CAGradientLayer()
         gradientLayer.startPoint = CGPoint(x: 0, y: 0)
@@ -19,9 +19,10 @@ extension UIView {
         
         gradientLayer.frame = CGRect(x: 0, y: 0, width: self.bounds.width, height: self.bounds.height)
     }
-    func updateUI() {
+    //MARK: - Add Shadow
+    func addShadow() {
         self.layer.shadowOffset = CGSize(width: 0, height: 5)
-        self.layer.shadowOpacity = 0.7
-        self.layer.shadowRadius = 10
+        self.layer.shadowOpacity = 0.8
+        self.layer.shadowRadius = 5
     }
 }
