@@ -8,9 +8,8 @@
 import UIKit
 
 class CityTableViewCell: UITableViewCell {
-
+    
     @IBOutlet weak var cityName: UILabel!
     @IBOutlet weak var cityImage: UIImageView!
     @IBOutlet weak var cityTemp: UILabel!
-    
 }

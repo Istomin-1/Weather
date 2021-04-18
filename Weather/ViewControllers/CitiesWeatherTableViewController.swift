@@ -11,7 +11,7 @@ import UIKit
 class CitiesWeatherTableViewController: UITableViewController {
     
     // MARK: - Properties
-    var citiesWeather = [ForecastWeather]()
+    var citiesWeather = [ForecastWeatherForCollection]()
     var networkManager = NetworkWeatherManager()
     
     // MARK: - Life cycle
@@ -71,7 +71,7 @@ class CitiesWeatherTableViewController: UITableViewController {
         }
     }
     
-    private func updateInterfaceWith(weather: ForecastWeather) {
+    private func updateInterfaceWith(weather: ForecastWeatherForCollection) {
         DispatchQueue.main.async {
             let newIndexPath = IndexPath(row: self.citiesWeather.count, section: 0)
             self.citiesWeather.append(weather)
@@ -91,11 +91,12 @@ class CitiesWeatherTableViewController: UITableViewController {
     
     //MARK: - Navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "detailWeather" {
-            let detailCityWeatherViewController = segue.destination as! DetailCityWeatherViewController
+        if segue.identifier == "detailForecast" {
+            let detailCityWeatherViewController = segue.destination as! DetailForecastWeatherViewController
             guard let indexPath = tableView.indexPathForSelectedRow else { return }
             let cityWeather = citiesWeather[indexPath.row]
-            detailCityWeatherViewController.cityWeather = cityWeather
+            detailCityWeatherViewController.forecastWeather = cityWeather
+            
         }
     }
 }

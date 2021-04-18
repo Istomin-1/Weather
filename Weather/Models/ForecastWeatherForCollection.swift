@@ -1,13 +1,13 @@
 //
-//  ForecastWeather .swift
+//  ForecastWeatherForCollection.swift
 //  Weather
 //
-//  Created by Mikhail on 12.04.2021.
+//  Created by Mikhail on 18.04.2021.
 //
 
 import Foundation
 
-struct ForecastWeather {
+struct ForecastWeatherForCollection {
     
     //MARK: - Transformed model
     let name: String
@@ -28,38 +28,39 @@ struct ForecastWeather {
     }
     
     let tempMin: [WeatherForecast]
-    private var tempMinDoubleAllDays: [[Double]] {
+    private var tempMinDoubleAllDays: [Double] {
         var tempsMinDouble = [Double]()
         for temp in tempMin {
             let tempMinResponse = temp.main.tempMin
             tempsMinDouble.append(tempMinResponse)
         }
-        let tempMinOneDay = createNewArray(array: tempsMinDouble, fromWhichIndex: 0, byWhatIndex: 7)
-        let tempMinTwoDays = createNewArray(array: tempsMinDouble, fromWhichIndex: 7, byWhatIndex: 15)
-        let tempMinThreeDays = createNewArray(array: tempsMinDouble, fromWhichIndex: 15, byWhatIndex: 23)
-        
-        return [tempMinOneDay, tempMinTwoDays, tempMinThreeDays]
+        return tempsMinDouble
     }
-    var tempMinString: [[String]] {
-        createStringFromDouble(from: tempMinDoubleAllDays)
+    var tempMinString: [String] {
+        var tempStringOneDay = [String]()
+        for tempDouble in tempMinDoubleAllDays {
+            let tempString = String(format: "%.0f°C ", tempDouble)
+            tempStringOneDay.append(tempString)
+        }
+        return tempStringOneDay
     }
     
     let tempMax: [WeatherForecast]
-    private var tempMaxDoubleAllDays: [[Double]] {
-        var tempMaxDouble = [Double]()
+    private var tempMaxDoubleAllDays: [Double] {
+        var tempsMaxDouble = [Double]()
         for temp in tempMax {
             let tempMaxResponse = temp.main.tempMax
-            tempMaxDouble.append(tempMaxResponse)
+            tempsMaxDouble.append(tempMaxResponse)
         }
-        let tempMaxOneDay = createNewArray(array: tempMaxDouble, fromWhichIndex: 0, byWhatIndex: 7)
-        let tempMaxTwoDays = createNewArray(array: tempMaxDouble, fromWhichIndex: 7, byWhatIndex: 15)
-        let tempMaxThreeDays = createNewArray(array: tempMaxDouble, fromWhichIndex: 15, byWhatIndex: 23)
-        
-        return [tempMaxOneDay, tempMaxTwoDays, tempMaxThreeDays]
+        return tempsMaxDouble
     }
-    
-    var tempMaxString: [[String]] {
-        createStringFromDouble(from: tempMaxDoubleAllDays)
+    var tempMaxString: [String] {
+        var tempStringOneDay = [String]()
+        for tempDouble in tempMaxDoubleAllDays {
+            let tempString = String(format: "%.0f°C ", tempDouble)
+            tempStringOneDay.append(tempString)
+        }
+        return tempStringOneDay
     }
     
     let dates: [WeatherForecast]
@@ -80,6 +81,26 @@ struct ForecastWeather {
             datesString.append(dateString)
         }
         return datesString
+    }
+    
+    let times: [WeatherForecast]
+    var dateFormaterTimes: [String] {
+        var timesString = [String]()
+        for time in times {
+            let timeResponse = time.dtTxt
+            
+            let timeStringGet = DateFormatter()
+            timeStringGet.dateFormat = "yyyy-MM-dd HH:mm:ss"
+            
+            let timePrint = DateFormatter()
+            timePrint.dateFormat = "HH:mm"
+            
+            guard let timeNew = timeStringGet.date(from: timeResponse) else { return [] }
+            let timeString = timePrint.string(from: timeNew)
+            
+            timesString.append(timeString)
+        }
+        return timesString
     }
     
     let conditionCode: [WeatherForecast]
@@ -113,26 +134,8 @@ struct ForecastWeather {
         tempMax = forecastWeatherData.list
         wind = forecastWeatherData.list.first!.wind.speed
         conditionCode = forecastWeatherData.list
+        times = forecastWeatherData.list
     }
-}
-// MARK: - Helper functions for converting minimum and maximum temperature
-private func createNewArray(array: [Double], fromWhichIndex indexOne: Int, byWhatIndex indextwo: Int) -> [Double] {
-    var tempsMinDouble = [Double]()
-    for index in indexOne ..< indextwo {
-        tempsMinDouble.append(array[index])
-    }
-    return tempsMinDouble.sorted()
 }
 
-private func createStringFromDouble(from array: [[Double]]) -> [[String]] {
-    var tempStringAllDays = [[String]]()
-    for tempDoubleOneDay in array {
-        var tempStringOneDay = [String]()
-        for tempDouble in tempDoubleOneDay {
-            let tempString = String(format: "%.0f°C ", tempDouble)
-            tempStringOneDay.append(tempString)
-        }
-        tempStringAllDays.append(tempStringOneDay)
-    }
-    return tempStringAllDays
-}
+

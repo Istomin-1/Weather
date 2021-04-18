@@ -10,10 +10,10 @@ import Foundation
 
 class NetworkWeatherManager {
     
-    var onCompletion: ((ForecastWeather) -> Void)?
+    var onCompletion: ((ForecastWeatherForCollection) -> Void)?
     
     func fetchForecastWeather(forCity city: String) {
-        let urlString = "https://api.openweathermap.org/data/2.5/forecast?q=\(city)&cnt=24&appid=\(apiKey)&units=metric"
+        let urlString = "https://api.openweathermap.org/data/2.5/forecast?q=\(city)&appid=\(apiKey)&units=metric"
         performRequest(withUrlString: urlString)
     }
     
@@ -29,11 +29,11 @@ class NetworkWeatherManager {
         task.resume()
     }
     
-    private func parseJSON(withData data: Data) -> ForecastWeather? {
+    private func parseJSON(withData data: Data) -> ForecastWeatherForCollection? {
         let decoder = JSONDecoder()
         do {
             let forecastWeatherData = try decoder.decode(ForecastWeatherData.self, from: data)
-            guard let forecastWeather = ForecastWeather(forecastWeatherData: forecastWeatherData) else { return nil }
+            guard let forecastWeather = ForecastWeatherForCollection(forecastWeatherData: forecastWeatherData) else { return nil }
             return forecastWeather
         } catch let error as NSError {
             print(error.localizedDescription)
